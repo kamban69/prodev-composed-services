@@ -10,10 +10,13 @@ services:
             context: ./auth
             dockerfile: Dockerfile.dev
         environment:
-            - JWT_SECRET=thiruekamban
-            - MONGODB_URL=mongodb://mongodb/prodev-composed-auth
+            JWT_SECRET: JWT_SECRET
+            NODE_ENV: development
+            MONGODB_URL: mongodb://mongodb/prodev-composed-auth
         depends_on:
             - mongodb
+        volumes:
+        - ./auth/src:/usr/src/app/src
                 
     app:
         build:         
